@@ -6,7 +6,6 @@ from personality import show_personality_page
 from functions_fit import show_functions_page
 from portfolio import show_portfolio_page
 from advice import show_advice_page
-from report import show_report_page
 from how_it_works import show_how_it_works_page
 from group_results import show_group_results_page
 from investors import show_investor_picker
@@ -28,7 +27,6 @@ results_pages = [
 
 report_pages = [
     st.Page(show_group_results_page, title="Group Results", icon=":material/groups:", url_path="group"),
-    st.Page(show_report_page, title="Final Report", icon=":material/description:", url_path="report"),
 ]
 
 help_pages = [
