@@ -1,0 +1,16 @@
+item_number,item_text,trait,reverse,bfi2_item_number
+1,Tends to be quiet.,Extraversion,yes,16
+2,"Is compassionate, has a soft heart.",Agreeableness,no,2
+3,Tends to be disorganized.,Conscientiousness,yes,3
+4,Worries a lot.,Negative Emotionality,no,34
+5,"Is fascinated by art, music, or literature.",Open-Mindedness,no,20
+6,"Is dominant, acts as a leader.",Extraversion,no,21
+7,Is sometimes rude to others.,Agreeableness,yes,37
+8,Has difficulty getting started on tasks.,Conscientiousness,yes,23
+9,"Tends to feel depressed, blue.",Negative Emotionality,no,54
+10,Has little interest in abstract ideas.,Open-Mindedness,yes,55
+11,Is full of energy.,Extraversion,no,41
+12,Assumes the best about people.,Agreeableness,no,57
+13,"Is reliable, can always be counted on.",Conscientiousness,no,43
+14,"Is emotionally stable, not easily upset.",Negative Emotionality,yes,29
+15,"Is original, comes up with new ideas.",Open-Mindedness,no,60
