@@ -3,4 +3,3 @@ __pycache__/
 .DS_Store
 data/responses.csv
 docs/
-CLAUDE.md

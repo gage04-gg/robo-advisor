@@ -104,6 +104,13 @@ def update_response_row(client_id, values):
     return True
 
 
+def widget_key(name):
+    version = 0
+    if "answers_version" in st.session_state:
+        version = st.session_state["answers_version"]
+    return name + "_v" + str(version)
+
+
 def get_saved_value(key, default_value):
     if "profile" in st.session_state:
         return st.session_state["profile"][key]
@@ -119,7 +126,7 @@ def get_saved_index(key, options):
 
 
 def ask_profile_choice(key, question, options):
-    answer = st.radio(question, options, index=get_saved_index(key, options), key="profile_" + key)
+    answer = st.radio(question, options, index=get_saved_index(key, options), key=widget_key("profile_" + key))
     return answer
 
 
@@ -132,7 +139,7 @@ def ask_q24():
         start_index = None
         if saved_scores is not None:
             start_index = saved_scores[i] - 1
-        answer = st.radio(Q24_STATEMENTS[i], LIKERT_OPTIONS, index=start_index, horizontal=True, key="profile_q24_" + str(i))
+        answer = st.radio(Q24_STATEMENTS[i], LIKERT_OPTIONS, index=start_index, horizontal=True, key=widget_key("profile_q24_" + str(i)))
         if answer is None:
             scores.append(None)
         else:
@@ -263,7 +270,7 @@ def show_profile_page():
     st.title("Client Profile")
     show_intro()
 
-    with st.form("profile_form"):
+    with st.form(widget_key("profile_form")):
         name = st.text_input("1. Your name", value=get_saved_value("name", ""))
 
         st.subheader("About you")

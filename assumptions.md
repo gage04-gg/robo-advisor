@@ -54,7 +54,7 @@ The Step 4 questionnaire is made of questions already in our form: Q9–Q10 (uti
 25. **EUT utility is CRRA over total wealth**: U(W) = W^(1−γ)/(1−γ), or ln W when γ = 1.
 26. **Background wealth W₀ = ₹10,00,000.** The questionnaire frames the client's money as ₹10 lakh (Q4, Q21–Q23), so each coin toss is added to ₹10 lakh. A background wealth is needed because the tosses pay ₹0 on tails, and CRRA utility of zero wealth is not defined for γ ≥ 1. A different W₀ gives a different γ.
 27. γ is solved by bisection from U(W₀ + CE) = 0.5·U(W₀ + X) + 0.5·U(W₀), separately for Q9 (X = ₹10 lakh) and Q10 (X = ₹5 lakh). The client's γ is the **average** of the two. The search range is −20 to 100; every possible answer in the form falls inside it.
-28. The CLAUDE.md brief said to solve γ at the two rows around the switch and take the midpoint. We instead solve γ once at the CE (which is already the midpoint of those two rows). This keeps the method the same as for α and β.
+28. The original project plan said to solve γ at the two rows around the switch and take the midpoint. We instead solve γ once at the CE (which is already the midpoint of those two rows). This keeps the method the same as for α and β.
 29. Q5 and Q6 are not used to fit γ. They are a check: the page shows whether the fitted γ predicts the same choice.
 30. **Prospect Theory value function**: v(x) = x^α for gains, v(x) = −λ(−x)^β for losses. The reference point is zero change in wealth.
 31. **Decision weight at p = 0.5 is taken as 0.5** (linear weighting) when fitting α, β and λ, as in the project brief.

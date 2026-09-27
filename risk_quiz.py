@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-from profile_page import format_rupees, update_response_row
+from profile_page import format_rupees, update_response_row, widget_key
 
 
 FEELING_OPTIONS = ["Very negative", "Negative", "Neutral", "Positive", "Very positive"]
@@ -94,7 +94,7 @@ def get_saved_answer(key):
 
 def ask_single(key, question, options):
     saved_index = get_saved_answer(key)
-    answer = st.radio(question, options, index=saved_index, key="quiz_" + key)
+    answer = st.radio(question, options, index=saved_index, key=widget_key("quiz_" + key))
     if answer is None:
         return None
     return options.index(answer)
@@ -109,7 +109,7 @@ def ask_table(key, question, note, row_labels, columns):
         start_index = None
         if saved_choices is not None:
             start_index = saved_choices[i]
-        answer = st.radio(row_labels[i], columns, index=start_index, horizontal=True, key="quiz_" + key + "_" + str(i))
+        answer = st.radio(row_labels[i], columns, index=start_index, horizontal=True, key=widget_key("quiz_" + key + "_" + str(i)))
         if answer is None:
             choices.append(None)
         else:
@@ -597,7 +597,7 @@ def show_risk_quiz_page():
         st.warning("Please fill the Client Profile first, so your answers can be saved.")
 
     answers = {}
-    with st.form("risk_quiz_form"):
+    with st.form(widget_key("risk_quiz_form")):
         ask_risky_choices(answers)
         ask_coin_tosses(answers)
         ask_gains_and_losses(answers)

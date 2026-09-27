@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-from profile_page import update_response_row
+from profile_page import update_response_row, widget_key
 
 
 ITEMS_FILE = "data/bfi2_items.csv"
@@ -43,7 +43,7 @@ def ask_one_item(items, i, saved_answers):
         LIKERT_OPTIONS,
         index=start_index,
         horizontal=True,
-        key="bfi_" + str(item_number),
+        key=widget_key("bfi_" + str(item_number)),
     )
     if answer is None:
         return None
@@ -195,7 +195,7 @@ def show_results(items):
 
 
 def answer_on_screen(items):
-    with st.form("bfi_form"):
+    with st.form(widget_key("bfi_form")):
         answers = ask_items(items)
         submitted = st.form_submit_button("Submit answers")
     if not submitted:
@@ -208,7 +208,7 @@ def answer_on_screen(items):
 
 
 def answer_by_typing():
-    with st.form("bfi_typed_form"):
+    with st.form(widget_key("bfi_typed_form")):
         st.write("Type the 15 answers in item order (Q29 rows 1 to 8, then Q30 rows 1 to 7), separated by spaces or commas.")
         typed_text = st.text_area("Answers", height=80)
         submitted = st.form_submit_button("Submit answers")

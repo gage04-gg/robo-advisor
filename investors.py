@@ -139,7 +139,7 @@ def build_investor(investor_id):
 
 
 def clear_client():
-    for key in ["profile", "client_id", "quiz", "personality", "functions"]:
+    for key in ["profile", "client_id", "quiz", "personality", "functions", "portfolios", "advice"]:
         if key in st.session_state:
             del st.session_state[key]
     old_widget_keys = []
@@ -160,18 +160,36 @@ def load_investor_into_session(investor_id):
     st.session_state["functions"] = investor["fits"]
 
 
-def show_investor_picker():
-    choices = [NEW_CLIENT]
+def switch_to_investor(selected):
+    clear_client()
+    if selected != NEW_CLIENT:
+        load_investor_into_session(selected)
+    st.session_state["loaded_investor"] = selected
+    version = 0
+    if "answers_version" in st.session_state:
+        version = st.session_state["answers_version"]
+    st.session_state["answers_version"] = version + 1
+
+
+def on_investor_change():
+    switch_to_investor(st.session_state["investor_picker"])
+
+
+def get_picker_choices():
+    choices = []
     for investor_id in get_investor_ids():
         choices.append(investor_id)
-    selected = st.sidebar.selectbox("Investor", choices, key="investor_picker")
+    choices.append(NEW_CLIENT)
+    return choices
+
+
+def show_investor_picker():
+    choices = get_picker_choices()
     if "loaded_investor" not in st.session_state:
-        st.session_state["loaded_investor"] = NEW_CLIENT
-    if selected != st.session_state["loaded_investor"]:
-        clear_client()
-        if selected != NEW_CLIENT:
-            load_investor_into_session(selected)
-        st.session_state["loaded_investor"] = selected
+        first_choice = choices[0]
+        switch_to_investor(first_choice)
+        st.session_state["investor_picker"] = first_choice
+    selected = st.sidebar.selectbox("Investor", choices, key="investor_picker", on_change=on_investor_change)
     if selected == NEW_CLIENT:
         st.sidebar.caption("Fill the pages in order for a new client.")
     else:
