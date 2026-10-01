@@ -1,4 +1,4 @@
-# Behavioral Robo-Advisor
+#  Robo-Advisor
 
 A Streamlit web app that works like a robo-advisor. A client answers one questionnaire, and the app turns the answers into a risk profile, a personality profile, a utility function, a value function, two portfolio recommendations and personal advice.
 
