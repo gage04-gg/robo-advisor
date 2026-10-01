@@ -1,5 +1,6 @@
 #  Robo-Advisor
-
+**Live app:** [gage-robo-advisor.streamlit.app](https://gage-robo-advisor.streamlit.app/)
+If it shows a sleep screen, click "Yes, get this app back up!" and wait about 30 seconds.
 A Streamlit web app that works like a robo-advisor. A client answers one questionnaire, and the app turns the answers into a risk profile, a personality profile, a utility function, a value function, two portfolio recommendations and personal advice.
 
 This was a group project for the Behavioural Finance course (MBA680) at IIT Kanpur. My part was designing the risk and time-preference questionnaire and building the whole portal. It is a course project, not real investment advice.
